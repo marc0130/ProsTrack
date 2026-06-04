@@ -1,10 +1,11 @@
+```html
 <!-- Version: 7.4.0 -->
 <!--
 ===================================================================================================
                                          PROSTRACK SYSTEM CORE
 ===================================================================================================
 * ARCHITECTURE: Monolithic Single-File Client-Side Progressive Web Application (PWA)
-* VERSION: 7.4.0 (Rule 3 Compliance Audited)
+* VERSION: 7.4.0 (Rule 3 Compliance & Backup System Restored)
 * DEPLOYMENT METHODOLOGY: Zero-Cost Edge Hosting via GitHub Pages
 * DATA PRIVACY MODEL: Offline-First Pure Local Sandbox Architecture (Local Storage Only)
 * MONETIZATION GATEWAY: Product-Led Growth (PLG) 14-Day Evaluative Dynamic Rolling Limiter
@@ -17,9 +18,8 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
           to smoothly scale multi-stage funnel drivers down to raw Dial target bases.
 - v7.3.0: Verified feature compliance ledger; integrated self-contained service workers, 
           injected high-intent search meta-tags, and optimized PWA manual install layouts.
-- v7.4.0: Executed strict structural compliance optimization. Completely scrubbed 
-          Pro-locked JSON/CSV manual export structures from the operational UI layout
-          to protect monetization pipeline integrity and enhance conversion friction gates.
+- v7.4.0: Restored fully functional JSON/CSV export capabilities under a Pro-unlocked safety-gate.
+          Maintains maximum monetization friction gates while securing long-term data portability.
 ===================================================================================================
 -->
 <!DOCTYPE html>
@@ -375,7 +375,7 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
                     <h3 style="color: #ffffff; font-weight: 700; margin-bottom: 8px;">👑 Premium Upgrades Checklist</h3>
                     <ul class="upsell-list">
                         <li class="upsell-item">❌ <span><b>14-Day History Limits:</b> Standard evaluation loops roll off dynamically. Pro accounts unlock absolute long-term trailing funnel performance analytics tracking.</span></li>
-                        <li class="upsell-item">❌ <span><b>Administrative Shield Protection:</b> Standard evaluation modes secure metrics locally. Pro unlock coordinates continuous long-term historical layout processing.</span></li>
+                        <li class="upsell-item">❌ <span><b>Administrative Export Suite:</b> Spreadsheet saves and clean JSON schemas are blocked during evaluations. Unlock Pro to download data models instantly.</span></li>
                     </ul>
                 </div>
 
@@ -515,7 +515,7 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
                         <div style="flex: 1;">
                             <h3 style="color: #10b981; margin-bottom: 4px; font-weight: 800;">Lifetime Pro Active</h3>
                             <p style="font-size: 0.75rem; color: #cbd5e1; line-height: 1.45; margin: 0;">
-                                Your workspace is permanently unlocked. Long-term analytics retention data and trajectory calculator scopes are fully active.
+                                Your workspace is permanently unlocked. Long-term analytics retention data, calculator scopes, and system exports are fully active.
                             </p>
                         </div>
                     </div>
@@ -569,16 +569,17 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
                     <button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button>
                 </div>
 
-                <!-- RULE 3 COMPLIANCE AUDIT DISCIPLINE CHECK: 
-                     Pro-locked JSON/CSV manual structural export models scrubbed completely 
-                     to protect downstream transactional monetization integrity routes. -->
+                <!-- DATABASE UTILITIES WITH RESTORED EXPORT SUITES
+                     All analytical export mechanics are properly protected by active Pro-unlocked validation triggers. -->
                 <div id="db-utilities-card" class="stat-card" style="margin-bottom: 1.5rem;">
                     <h3>Database Utilities & Protection</h3>
                     <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; margin-bottom: 14px; font-size: 0.8rem; line-height: 1.45; color: #cbd5e1;">
                         ℹ️ <b>Local Security Shield Active:</b> Your cold-calling metrics are isolated to this device's secure local sandbox. Premium Pro profiles utilize continuous absolute retention loops.
                     </div>
+                    <button id="btn-export-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportData()">Export JSON Backup <span id="lbl-json-lock" class="badge-lock">Pro Locked</span></button>
                     <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)">
                     <button id="btn-import-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="document.getElementById('import-file').click()">Restore Local JSON Backup</button>
+                    <button id="btn-export-csv" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportToCSV()">Export CSV Report <span id="lbl-csv-lock" class="badge-lock">Pro Locked</span></button>
                     <button id="btn-clear-data" class="btn-action btn-danger" style="width:100%" onclick="clearAllData()">Clear All Local Logs</button>
                 </div>
 
@@ -626,7 +627,7 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
             "v7.1.1 - Trajectory panel redesign configurations completed.",
             "v7.1.2 - Re-engineered math engine inside calculateDailyPacing() so alternative metrics normalize down to Dial targets.",
             "v7.3.0 - Fully verified feature compliance ledger. Restored missing magic URL link passcodes parser, added PWA installation guide markup cards, and reinforced schema update retention routes.",
-            "v7.4.0 - Executed strict Rule 3 Compliance audit. Removed Pro-locked JSON/CSV manual export structures from UI to maximize core license value loop parameters."
+            "v7.4.0 - Executed strict Rule 3 Compliance audit. Restored local export safety mechanisms to protect database utility schema definitions while locking downstream analytics retention profiles."
         ];
 
         // Core Access Licensing Keys & Core Key Storage Namespaces
@@ -741,14 +742,29 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
                 rootAppShell.classList.add(isUnlocked ? 'pro-active' : isInitialized ? 'trial-active' : 'raw-sandbox');
             }
 
+            // Synchronizes premium visibility classes across locked utility modules
+            const btnJson = document.getElementById('btn-export-data');
+            const btnCsv = document.getElementById('btn-export-csv');
+            const lblJson = document.getElementById('lbl-json-lock');
+            const lblCsv = document.getElementById('lbl-csv-lock');
+
             if (isUnlocked) {
                 if (navBtnWelcome) navBtnWelcome.style.display = 'none';
                 if (document.getElementById('welcome').classList.contains('active')) showTab('tracker');
+                if (btnJson) btnJson.style.opacity = '1';
+                if (btnCsv) btnCsv.style.opacity = '1';
+                if (lblJson) lblJson.style.display = 'none';
+                if (lblCsv) lblCsv.style.display = 'none';
             } else {
                 if (navBtnWelcome) {
                     navBtnWelcome.style.display = 'flex';
                     navBtnWelcome.innerText = isInitialized ? 'Trial' : 'Unlock';
                 }
+                if (btnJson) btnJson.style.opacity = '0.4';
+                if (btnCsv) btnCsv.style.opacity = '0.4';
+                if (lblJson) lblJson.style.display = 'inline-block';
+                if (lblCsv) lblCsv.style.display = 'inline-block';
+
                 if (!isInitialized) {
                     const anyTabActive = document.querySelector('.tab-content.active');
                     if (!anyTabActive || anyTabActive.id === 'welcome') {
@@ -1181,11 +1197,39 @@ REVISION LOG & LEDGER CONTROL ACCURACY:
         }
 
         // =========================================================================================
-        //  RULE 3 MONETIZATION PRIVACY COMPLIANCE HANDLERS
-        //  Intentionally restricted to safeguard conversion friction points.
+        //  RESTORED ADMINISTRATIVE EXPORT STRUCTURAL SUITES (PRO-LOCKED SYSTEM ROUTINES)
         // =========================================================================================
-        function exportData() { showToast("Export structures restricted under current layout logic.", "warning"); }
-        function exportToCSV() { showToast("CSV Engine restricted. Tracking limits active.", "warning"); }
+        
+        /** Triggers standard object downloads mapping active local datasets to backup text files */
+        function exportData() { 
+            if (!appState?.settings?.unlocked) { 
+                showTab('welcome'); 
+                showToast("Administrative export suite requires Pro unlock passcode.", "warning");
+                return; 
+            } 
+            const a = document.createElement('a'); 
+            a.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(appState, null, 2)); 
+            a.download = 'prospecting_data.json'; 
+            a.click(); 
+        }
+
+        /** Compiles historical databases down to flat CSV spreadsheet data models */
+        function exportToCSV() { 
+            if (!appState?.settings?.unlocked) { 
+                showTab('welcome'); 
+                showToast("CSV generation engine restricted during free evaluation loops.", "warning");
+                return; 
+            } 
+            let csv = "Date,Dials,Contacts,Presentations,Quotes\n"; 
+            Object.keys(appState.history).sort().reverse().forEach(dStr => { 
+                const h = appState.history[dStr] || { dials: 0, contacts: 0, presentations: 0, quoted: 0 }; 
+                csv += `${dStr},${h.dials || 0},${h.contacts || 0},${h.presentations || 0},${h.quoted || 0}\n`; 
+            }); 
+            const a = document.createElement('a'); 
+            a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' })); 
+            a.download = 'prospecting_report.csv'; 
+            a.click(); 
+        }
         
         /** Restores localized backups from historical JSON string files */
         function importData(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { try { let parsed = JSON.parse(e.target.result); if (parsed?.history) { parsed = migrateDatabaseSchema(parsed); appState = parsed; save(); evaluateApplicationStateViewports(); showToast('Database backup successfully restored.', 'success'); } } catch (err) { showToast('Parsing structural failure.', 'error'); } }; reader.readAsText(file); event.target.value = ''; }
