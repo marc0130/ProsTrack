@@ -1,28 +1,26 @@
-<!-- Version: 7.6.3 -->
-<!--
-===================================================================================================
-                                         PROSTRACK SYSTEM CORE
-===================================================================================================
-* VERSION: 7.6.3 (Local testing: direct passcode compare, no crypto dependency)
-===================================================================================================
--->
+<!-- Version: 7.7.0 Complete -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ProsTrack - Minimalist Outbound Call Logger & Sales Funnel Tracker</title>
-    <meta name="description" content="Offline-first, minimalist PWA outbound call logger & sales funnel tracker designed for rapid, one-handed execution. Pure local security for cold calling reps.">
-    <meta name="keywords" content="minimalist outbound call logger, one-handed sales funnel tracker, offline-first prospecting utility, cold call counter, PWA sales log, sales rep crm companion">
+    <meta name="description" content="Offline-first, minimalist PWA outbound call logger & sales funnel tracker designed for rapid, one-handed execution.">
+    <meta name="keywords" content="minimalist outbound call logger, one-handed sales funnel tracker, offline-first prospecting utility">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://marc0130.github.io/ProsTrack/">
+    <link rel="canonical" href="https://YOUR_USERNAME.github.io/ProsTrack/">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ProsTrack">
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUHJvc1RyYWNrIiwic2hvcnRfbmFtZSI6IlByb3NUcmFjayIsImRlc2NyaXB0aW9uIjoiTWluaW1hbGlzdCBPdXRib3VuZCBDYWxsIExvZ2dlciAmIFNhbGVzIEZ1bm5lbCBUcmFja2VyIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzA1MDcwZiIsInRoZW1lX2NvbG9yIjoiIzA1MDcwZiIsInN0YXJ0X3VybCI6ImluZGV4Lmh0bWwiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO3V0ZjgsPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA1MTIgNTEyJz48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScwMTIlJyByeD0nMTI4JyBmaWxsPSclMjMwZjE3MmEnLz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjEyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSclMjMzYjgyZjYnIHN0cm9rZS13aWR0aD0iMzIiLz48cGF0aCBkPSJNMjU2IDE4MHYxNk0xMTYgMjU2aDE2MCIgc3Ryb2tlPSclMjMxMGI5ODEnIHN0cm9rZS13aWR0aD0nMzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjwvc3ZnPiIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+    
+    <!-- Real manifest.json (not data URI) -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Payhip script (keep if you use it) -->
     <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+    
     <style>
-        /* ========== ALL EXISTING CSS (unchanged) ========== */
+        /* ========== ALL EXISTING CSS (unchanged from v7.6.3) ========== */
         body { background-color: #05070f; margin: 0; padding: 0; overflow-x: hidden; }
         #prostrack-app { --bg: #05070f; --card-bg: #0f172a; --border: #1e293b; --text: #f8fafc; --text-muted: #64748b; --accent: #3b82f6; --danger: #ef4444; --accent-dial: #64748b; --accent-contact: #3b82f6; --accent-presentation: #a855f7; --accent-quote: #10b981; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; width: 100%; padding-bottom: 120px; box-sizing: border-box; -webkit-tap-highlight-color: transparent; display: flex; flex-direction: column; position: relative; }
         #prostrack-app *, #prostrack-app *::before, #prostrack-app *::after { box-sizing: border-box; }
@@ -116,198 +114,77 @@
 <body>
 <div id="prostrack-app" class="raw-sandbox">
     <main>
+        <!-- Welcome tab -->
         <section id="welcome" class="tab-content">
             <h1>Welcome to ProsTrack</h1>
-            <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 1.5rem;">
-                You are currently evaluating ProsTrack under a standard local 14-day tracking window. Upgrade to premium layout configurations:
-            </p>
+            <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 1.5rem;">You are currently evaluating ProsTrack under a standard local 14-day tracking window. Upgrade to premium layout configurations:</p>
             <div class="stat-card" style="border-color: #3b82f6; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(5, 7, 15, 0.5) 100%); margin-bottom: 1.5rem;">
                 <h3 style="color: #ffffff; font-weight: 700; margin-bottom: 8px;">👑 Premium Upgrades Checklist</h3>
-                <ul class="upsell-list">
-                    <li class="upsell-item">❌ <span><b>14-Day History Limits:</b> Standard evaluation loops roll off dynamically. Pro accounts unlock absolute long-term trailing funnel performance analytics tracking.</span></li>
-                    <li class="upsell-item">❌ <span><b>Administrative Export Suite:</b> Spreadsheet saves and clean JSON schemas are blocked during evaluations. Unlock Pro to download data models instantly.</span></li>
-                </ul>
+                <ul class="upsell-list"><li class="upsell-item">❌ <span><b>14-Day History Limits:</b> Standard evaluation loops roll off dynamically. Pro accounts unlock absolute long-term trailing funnel performance analytics tracking.</span></li><li class="upsell-item">❌ <span><b>Administrative Export Suite:</b> Spreadsheet saves and clean JSON schemas are blocked during evaluations. Unlock Pro to download data models instantly.</span></li></ul>
             </div>
             <div class="stat-card" id="card-unlock-license" style="border-color: #d97706; background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(5, 7, 15, 0.5) 100%); margin-bottom: 1.5rem;">
                 <h3 style="color: #fbbf24; margin-bottom: 8px;">🔑 License Activator</h3>
                 <div id="activation-deck">
-                    <div style="margin-bottom: 1.5rem; text-align: center; background: rgba(5, 7, 15, 0.4); padding: 14px; border-radius: 12px; border: 1px dashed var(--border);">
-                        <span style="font-size: 0.8rem; color: #cbd5e1; display: block; margin-bottom: 10px; font-weight: 500;">Don't have an activation key yet? Get instant access:</span>
-                        <a href="https://payhip.com/b/w2gFr" class="payhip-buy-button" data-theme="green" data-product="w2gFr">Buy Now</a>
-                    </div>
+                    <div style="margin-bottom: 1.5rem; text-align: center; background: rgba(5, 7, 15, 0.4); padding: 14px; border-radius: 12px; border: 1px dashed var(--border);"><span style="font-size: 0.8rem; color: #cbd5e1; display: block; margin-bottom: 10px; font-weight: 500;">Don't have an activation key yet? Get instant access:</span><a href="https://payhip.com/b/w2gFr" class="payhip-buy-button" data-theme="green" data-product="w2gFr">Buy Now</a></div>
                     <label for="txt-passcode-input">PURCHASE PASSCODE</label>
-                    <div style="display: flex; gap: 10px; margin-bottom: 6px;">
-                        <input type="text" id="txt-passcode-input" placeholder="Enter your license key" style="margin-bottom: 0;">
-                        <button class="btn-action" style="height: 48px; min-height: 48px; border-radius: 14px; background: #d97706; border-color: #d97706; color: white; padding: 0 20px; font-size: 0.9rem; font-weight: bold;" onclick="verifyManualPasscode()">Activate</button>
-                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 6px;"><input type="text" id="txt-passcode-input" placeholder="Enter your license key" style="margin-bottom: 0;"><button class="btn-action" style="height: 48px; min-height: 48px; border-radius: 14px; background: #d97706; border-color: #d97706; color: white; padding: 0 20px; font-size: 0.9rem; font-weight: bold;" onclick="verifyManualPasscode()">Activate</button></div>
                 </div>
             </div>
-            <button class="btn-action btn-dial" id="btn-trial-convert-cta" style="width: 100%; font-size: 1.05rem; background: #1e293b; margin-bottom: 14px;" onclick="initializeLiveTrialEnrollment()">
-                Activate Clean 14-Day Local Trial
-            </button>
-            <div class="stat-card" style="border-color: var(--border); background: #0c1222; text-align: center; padding: 1.25rem; border-radius: 20px; margin-top: 1.5rem;">
-                <h3 style="color: #cbd5e1; margin-bottom: 6px; font-size: 0.9rem;">📬 High-Trust Direct Support</h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 12px 0; line-height: 1.45;">
-                    Need customized calculators, configurations, or have questions? Contact us anonymously.
-                </p>
-                <a href="mailto:prostrack99@gmail.com" style="display: inline-block; background: #1e293b; border: 1px solid var(--border); color: var(--accent); padding: 8px 16px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none;">
-                    prostrack99@gmail.com
-                </a>
-            </div>
+            <button class="btn-action btn-dial" id="btn-trial-convert-cta" style="width: 100%; font-size: 1.05rem; background: #1e293b; margin-bottom: 14px;" onclick="initializeLiveTrialEnrollment()">Activate Clean 14-Day Local Trial</button>
+            <div class="stat-card" style="border-color: var(--border); background: #0c1222; text-align: center; padding: 1.25rem; border-radius: 20px; margin-top: 1.5rem;"><h3 style="color: #cbd5e1; margin-bottom: 6px; font-size: 0.9rem;">📬 High-Trust Direct Support</h3><p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 12px 0; line-height: 1.45;">Need customized calculators, configurations, or have questions? Contact us anonymously.</p><a href="mailto:prostrack99@gmail.com" style="display: inline-block; background: #1e293b; border: 1px solid var(--border); color: var(--accent); padding: 8px 16px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none;">prostrack99@gmail.com</a></div>
         </section>
+        <!-- Tracker tab -->
         <section id="tracker" class="tab-content active">
             <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Interactive Demo: Raw Sandbox Mode</span><span style="text-decoration: underline;">ACTIVATE 14-DAY TRIAL ↗</span></div>
             <div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial Mode</span><span style="text-decoration: underline;">UPGRADE ↗</span></div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; height: 40px;">
-                <h2 id="tracker-header" style="margin: 0;">Tracker Workspace</h2>
-                <button id="btn-fullscreen-toggle" onclick="toggleFullscreen()" style="background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer;">Fullscreen: Off</button>
-            </div>
-            <div class="dash">
-                <div class="dash-item"><span class="dash-label">Dial</span><span id="dash-d" class="dash-val">0</span></div>
-                <div class="dash-item"><span class="dash-label">Cont</span><span id="dash-c" class="dash-val">0</span></div>
-                <div class="dash-item"><span class="dash-label">Pres</span><span id="dash-p" class="dash-val">0</span></div>
-                <div class="dash-item"><span class="dash-label">Quote</span><span id="dash-q" class="dash-val">0</span></div>
-            </div>
-            <div id="pacing-container" style="margin-bottom: 1.75rem; padding: 0 0.5rem;">
-                <div class="progress-track"><div id="pacing-fill" style="height: 100%; width: 0%; background: var(--danger); transition: width 0.4s ease, background-color 0.4s ease;"></div></div>
-                <div id="pacing-label" style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 8px; color: var(--text-muted);">
-                    <span id="pacing-left">Progress: 0 / N/A Dials</span>
-                    <span id="pacing-right" style="font-style: italic;">Processing parameters...</span>
-                </div>
-                <div id="pacing-ratios" style="font-size: 0.75rem; color: var(--accent-quote); font-family: monospace; font-weight: 700; text-align: center; margin-top: 8px; letter-spacing: 1px; display: none;"></div>
-            </div>
-            <div class="action-stack">
-                <button class="btn-action btn-dial" onclick="record('dial')">Dial</button>
-                <button class="btn-action btn-contact" onclick="record('contact')">Contact</button>
-                <button class="btn-action btn-presentation" onclick="record('presentation')">Presentation</button>
-                <button class="btn-action btn-quote" onclick="handleQuoteClick()">Quote</button>
-            </div>
-            <div style="text-align: center; margin-top: 1.5rem;">
-                <div id="last-action-display" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; height: 16px;"></div>
-                <button onclick="undo()" style="background:none; border:none; color:var(--text-muted); font-size:0.8rem; cursor:pointer; min-height: 48px;">↺ Undo Last Action</button>
-            </div>
-            <div id="quote-confirm-banner">
-                <div class="banner-content">
-                    <span class="banner-title">🏆 Quote Logged!</span>
-                    <span class="banner-timer">Undo window closes in <span id="countdown-num">5</span>s...</span>
-                    <button class="btn-undo-banner" onclick="cancelQuoteRecord()">Undo</button>
-                </div>
-                <div class="banner-progress-bar"><div id="banner-progress-fill"></div></div>
-            </div>
-            <div class="version dev-label-target" id="lbl-version-tracker">ProsTrack v7.6.3</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; height: 40px;"><h2 id="tracker-header" style="margin: 0;">Tracker Workspace</h2><button id="btn-fullscreen-toggle" onclick="toggleFullscreen()" style="background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer;">Fullscreen: Off</button></div>
+            <div class="dash"><div class="dash-item"><span class="dash-label">Dial</span><span id="dash-d" class="dash-val">0</span></div><div class="dash-item"><span class="dash-label">Cont</span><span id="dash-c" class="dash-val">0</span></div><div class="dash-item"><span class="dash-label">Pres</span><span id="dash-p" class="dash-val">0</span></div><div class="dash-item"><span class="dash-label">Quote</span><span id="dash-q" class="dash-val">0</span></div></div>
+            <div id="pacing-container" style="margin-bottom: 1.75rem; padding: 0 0.5rem;"><div class="progress-track"><div id="pacing-fill" style="height: 100%; width: 0%; background: var(--danger); transition: width 0.4s ease, background-color 0.4s ease;"></div></div><div id="pacing-label" style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 8px; color: var(--text-muted);"><span id="pacing-left">Progress: 0 / N/A Dials</span><span id="pacing-right" style="font-style: italic;">Processing parameters...</span></div><div id="pacing-ratios" style="font-size: 0.75rem; color: var(--accent-quote); font-family: monospace; font-weight: 700; text-align: center; margin-top: 8px; letter-spacing: 1px; display: none;"></div></div>
+            <div class="action-stack"><button class="btn-action btn-dial" onclick="record('dial')">Dial</button><button class="btn-action btn-contact" onclick="record('contact')">Contact</button><button class="btn-action btn-presentation" onclick="record('presentation')">Presentation</button><button class="btn-action btn-quote" onclick="handleQuoteClick()">Quote</button></div>
+            <div style="text-align: center; margin-top: 1.5rem;"><div id="last-action-display" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; height: 16px;"></div><button onclick="undo()" style="background:none; border:none; color:var(--text-muted); font-size:0.8rem; cursor:pointer; min-height: 48px;">↺ Undo Last Action</button></div>
+            <div id="quote-confirm-banner"><div class="banner-content"><span class="banner-title">🏆 Quote Logged!</span><span class="banner-timer">Undo window closes in <span id="countdown-num">5</span>s...</span><button class="btn-undo-banner" onclick="cancelQuoteRecord()">Undo</button></div><div class="banner-progress-bar"><div id="banner-progress-fill"></div></div></div>
+            <div class="version dev-label-target" id="lbl-version-tracker">ProsTrack v7.7.0</div>
         </section>
+        <!-- Stats tab -->
         <section id="stats" class="tab-content">
-            <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Demo Mode Sandbox</span></div>
-            <div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial</span></div>
+            <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Demo Mode Sandbox</span></div><div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial</span></div>
             <h2>Performance Dashboard</h2>
-            <div class="stat-card" id="pace-calculator-card" style="margin-bottom: 1.5rem; border-color: var(--accent); background: linear-gradient(135deg, #0f172a 0%, #070a13 100%);">
-                <h3 style="color: #cbd5e1; display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                    <span>🎯 Required Forward Trajectory (Dials Engine)</span>
-                    <span id="traj-header-badge" style="font-size: 0.65rem; background: #1e293b; padding: 4px 8px; border-radius: 6px; color: var(--accent); font-weight: 800;">DRIVER: DIAL</span>
-                </h3>
-                <div id="pace-calc-output"></div>
-            </div>
-            <div class="stat-card">
-                <table><thead><tr><th>Range</th><th>D</th><th>C</th><th>P</th><th>Q</th></tr></thead><tbody id="summary-table"></tbody></table>
-            </div>
-            <select id="rangeSelect" onchange="updateUI()">
-                <option value="today">Today</option><option value="yesterday">Yesterday</option>
-                <option value="this_week">This Week</option><option value="last_week">Last Week</option>
-                <option value="this_month" selected>This Month</option><option value="last_month">Last Month</option>
-                <option value="last_14">Last 14 Days (Trial Max)</option>
-            </select>
+            <div class="stat-card" id="pace-calculator-card" style="margin-bottom: 1.5rem; border-color: var(--accent); background: linear-gradient(135deg, #0f172a 0%, #070a13 100%);"><h3 style="color: #cbd5e1; display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;"><span>🎯 Required Forward Trajectory (Dials Engine)</span><span id="traj-header-badge" style="font-size: 0.65rem; background: #1e293b; padding: 4px 8px; border-radius: 6px; color: var(--accent); font-weight: 800;">DRIVER: DIAL</span></h3><div id="pace-calc-output"></div></div>
+            <div class="stat-card"><table><thead><tr><th>Range</th><th>D</th><th>C</th><th>P</th><th>Q</th></tr></thead><tbody id="summary-table"></tbody></table></div>
+            <select id="rangeSelect" onchange="updateUI()"><option value="today">Today</option><option value="yesterday">Yesterday</option><option value="this_week">This Week</option><option value="last_week">Last Week</option><option value="this_month" selected>This Month</option><option value="last_month">Last Month</option><option value="last_14">Last 14 Days (Trial Max)</option></select>
             <div id="stats-display"></div>
         </section>
+        <!-- Admin tab -->
         <section id="admin" class="tab-content">
-            <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Interactive Demo</span></div>
-            <div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ Trial Mode</span></div>
+            <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Interactive Demo</span></div><div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ Trial Mode</span></div>
             <h2>Settings & Security</h2>
-            <div class="stat-card" id="card-unlocked-success-indicator" style="display: none; border-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 7, 15, 0.5) 100%); margin-bottom: 1.5rem;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 1.85rem; line-height: 1;">🏆</span>
-                    <div style="flex: 1;">
-                        <h3 style="color: #10b981; margin-bottom: 4px; font-weight: 800;">Lifetime Pro Active</h3>
-                        <p style="font-size: 0.75rem; color: #cbd5e1; line-height: 1.45; margin: 0;">Your workspace is permanently unlocked. Long-term analytics retention data, calculator scopes, and system exports are fully active.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card" style="margin-bottom: 1.5rem;">
-                <h3>Smart Pacing Goal Configuration</h3>
-                <div style="margin-bottom: 16px;"><label>PACING DRIVER</label><div class="segmented-control">
-                    <button class="seg-btn" onclick="updateGoalMetric('dial')" id="seg-dial">Dial</button>
-                    <button class="seg-btn" onclick="updateGoalMetric('contact')" id="seg-contact">Cont</button>
-                    <button class="seg-btn" onclick="updateGoalMetric('presentation')" id="seg-presentation">Pres</button>
-                    <button class="seg-btn" onclick="updateGoalMetric('quoted')" id="seg-quoted">Quote</button>
-                </div></div>
-                <div style="margin-bottom: 16px;"><label>DAILY VALUE TARGET</label><div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border);">
-                    <button onclick="adjustGoal(-1)" class="btn-stepper">-</button>
-                    <span id="goal-value-display" style="font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: monospace;">50</span>
-                    <button onclick="adjustGoal(1)" class="btn-stepper">+</button>
-                </div></div>
-                <div style="border-top: 1px solid var(--border); padding-top: 12px;"><label>PROJECTED FUNNEL VALUE OUTPUT (D : C : P : Q)</label><div id="projected-ratio-settings" style="font-family: monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-quote); text-align: center; letter-spacing: 1px;">N/A</div></div>
-            </div>
-            <div class="stat-card" style="margin-bottom: 1.5rem;">
-                <h3>Historical Day Editor</h3>
-                <div style="margin-bottom: 14px;"><label for="editor-date-select">SELECT TRANSACTION DATE</label><input type="date" id="editor-date-select" onchange="loadDayToEditor()" style="margin-bottom: 0;"></div>
-                <div id="editor-warning-box" style="background: #451a03; border: 1px solid #9a3412; border-radius: 12px; padding: 12px; margin-bottom: 16px; display: none;"><div style="font-size: 0.75rem; color: #fdba74; font-weight: 700; text-transform: uppercase;">⚠️ WARNING: PERMANENT OVERWRITE</div><div style="font-size: 0.75rem; color: #ffedd5; line-height: 1.4;">Saving will instantly overwrite this day's metrics. This action cannot be reverted.</div></div>
-                <div id="editor-deck" style="display: none; margin-bottom: 16px;">
-                    <div class="editor-row"><span class="editor-label">Dials Volume</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('dials', -1)">-</button><span class="editor-val" id="ed-dials">0</span><button class="btn-stepper" onclick="adjustEditorMetric('dials', 1)">+</button></div></div>
-                    <div class="editor-row"><span class="editor-label">Contacts Made</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('contacts', -1)">-</button><span class="editor-val" id="ed-contacts">0</span><button class="btn-stepper" onclick="adjustEditorMetric('contacts', 1)">+</button></div></div>
-                    <div class="editor-row"><span class="editor-label">Presentations Done</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('presentations', -1)">-</button><span class="editor-val" id="ed-presentations">0</span><button class="btn-stepper" onclick="adjustEditorMetric('presentations', 1)">+</button></div></div>
-                    <div class="editor-row"><span class="editor-label">Quotes Secured</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('quoted', -1)">-</button><span class="editor-val" id="ed-quoted">0</span><button class="btn-stepper" onclick="adjustEditorMetric('quoted', 1)">+</button></div></div>
-                </div>
-                <button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button>
-            </div>
-            <div id="db-utilities-card" class="stat-card" style="margin-bottom: 1.5rem;">
-                <h3>Database Utilities</h3>
-                <button id="btn-export-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportData()">Export JSON Backup <span id="lbl-json-lock" class="badge-lock">Pro Locked</span></button>
-                <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)">
-                <button id="btn-import-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="document.getElementById('import-file').click()">Restore JSON Backup</button>
-                <button id="btn-export-csv" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportToCSV()">Export CSV Report <span id="lbl-csv-lock" class="badge-lock">Pro Locked</span></button>
-                <button id="btn-clear-data" class="btn-action btn-danger" style="width:100%" onclick="clearAllData()">Clear All Data</button>
-            </div>
-            <div id="install-guide-card" class="stat-card" style="margin-bottom: 1.5rem;">
-                <h3>How to Install (PWA)</h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 12px;">ProsTrack is a Progressive Web App. Adding it to your home screen installs it as an offline-first workspace, removing browser frames.</p>
-                <div style="font-size: 0.8rem; line-height: 1.5; margin-bottom: 14px;"><strong>iOS (Safari):</strong> Tap the <b>Share</b> button, scroll down, and select <b>Add to Home Screen</b>.<br><strong>Android (Chrome):</strong> Tap the <b>Menu (⋮)</b> icon, and select <b>Install App</b> or <b>Add to Home Screen</b>.</div>
-            </div>
-            <div class="version dev-label-target" id="lbl-version-admin" style="cursor: pointer;">ProsTrack v7.6.3</div>
+            <div class="stat-card" id="card-unlocked-success-indicator" style="display: none; border-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 7, 15, 0.5) 100%); margin-bottom: 1.5rem;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.85rem; line-height: 1;">🏆</span><div style="flex: 1;"><h3 style="color: #10b981; margin-bottom: 4px; font-weight: 800;">Lifetime Pro Active</h3><p style="font-size: 0.75rem; color: #cbd5e1; line-height: 1.45; margin: 0;">Your workspace is permanently unlocked. Long-term analytics retention data, calculator scopes, and system exports are fully active.</p></div></div></div>
+            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Smart Pacing Goal Configuration</h3><div style="margin-bottom: 16px;"><label>PACING DRIVER</label><div class="segmented-control"><button class="seg-btn" onclick="updateGoalMetric('dial')" id="seg-dial">Dial</button><button class="seg-btn" onclick="updateGoalMetric('contact')" id="seg-contact">Cont</button><button class="seg-btn" onclick="updateGoalMetric('presentation')" id="seg-presentation">Pres</button><button class="seg-btn" onclick="updateGoalMetric('quoted')" id="seg-quoted">Quote</button></div></div><div style="margin-bottom: 16px;"><label>DAILY VALUE TARGET</label><div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border);"><button onclick="adjustGoal(-1)" class="btn-stepper">-</button><span id="goal-value-display" style="font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: monospace;">50</span><button onclick="adjustGoal(1)" class="btn-stepper">+</button></div></div><div style="border-top: 1px solid var(--border); padding-top: 12px;"><label>PROJECTED FUNNEL VALUE OUTPUT (D : C : P : Q)</label><div id="projected-ratio-settings" style="font-family: monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-quote); text-align: center; letter-spacing: 1px;">N/A</div></div></div>
+            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Historical Day Editor</h3><div style="margin-bottom: 14px;"><label for="editor-date-select">SELECT TRANSACTION DATE</label><input type="date" id="editor-date-select" onchange="loadDayToEditor()" style="margin-bottom: 0;"></div><div id="editor-warning-box" style="background: #451a03; border: 1px solid #9a3412; border-radius: 12px; padding: 12px; margin-bottom: 16px; display: none;"><div style="font-size: 0.75rem; color: #fdba74; font-weight: 700; text-transform: uppercase;">⚠️ WARNING: PERMANENT OVERWRITE</div><div style="font-size: 0.75rem; color: #ffedd5; line-height: 1.4;">Saving will instantly overwrite this day's metrics. This action cannot be reverted.</div></div><div id="editor-deck" style="display: none; margin-bottom: 16px;"><div class="editor-row"><span class="editor-label">Dials Volume</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('dials', -1)">-</button><span class="editor-val" id="ed-dials">0</span><button class="btn-stepper" onclick="adjustEditorMetric('dials', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Contacts Made</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('contacts', -1)">-</button><span class="editor-val" id="ed-contacts">0</span><button class="btn-stepper" onclick="adjustEditorMetric('contacts', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Presentations Done</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('presentations', -1)">-</button><span class="editor-val" id="ed-presentations">0</span><button class="btn-stepper" onclick="adjustEditorMetric('presentations', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Quotes Secured</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('quoted', -1)">-</button><span class="editor-val" id="ed-quoted">0</span><button class="btn-stepper" onclick="adjustEditorMetric('quoted', 1)">+</button></div></div></div><button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button></div>
+            <div id="db-utilities-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>Database Utilities</h3><button id="btn-export-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportData()">Export JSON Backup <span id="lbl-json-lock" class="badge-lock">Pro Locked</span></button><input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)"><button id="btn-import-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="document.getElementById('import-file').click()">Restore JSON Backup</button><button id="btn-export-csv" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportToCSV()">Export CSV Report <span id="lbl-csv-lock" class="badge-lock">Pro Locked</span></button><button id="btn-clear-data" class="btn-action btn-danger" style="width:100%" onclick="clearAllData()">Clear All Data</button></div>
+            <div id="install-guide-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>How to Install (PWA)</h3><p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 12px;">ProsTrack is a Progressive Web App. Adding it to your home screen installs it as an offline-first workspace, removing browser frames.</p><div style="font-size: 0.8rem; line-height: 1.5; margin-bottom: 14px;"><strong>iOS (Safari):</strong> Tap the <b>Share</b> button, scroll down, and select <b>Add to Home Screen</b>.<br><strong>Android (Chrome):</strong> Tap the <b>Menu (⋮)</b> icon, and select <b>Install App</b> or <b>Add to Home Screen</b>.</div></div>
+            <div class="version dev-label-target" id="lbl-version-admin" style="cursor: pointer;">ProsTrack v7.7.0</div>
         </section>
     </main>
-    <nav id="app-navigation-bar" class="nav">
-        <button onclick="showTab('welcome')" id="nav-welcome">Unlock</button>
-        <button onclick="showTab('tracker')" id="nav-tracker" class="active">Tracker</button>
-        <button onclick="showTab('stats')" id="nav-stats">Stats</button>
-        <button onclick="showTab('admin')" id="nav-admin">Admin</button>
-    </nav>
+    <nav id="app-navigation-bar" class="nav"><button onclick="showTab('welcome')" id="nav-welcome">Unlock</button><button onclick="showTab('tracker')" id="nav-tracker" class="active">Tracker</button><button onclick="showTab('stats')" id="nav-stats">Stats</button><button onclick="showTab('admin')" id="nav-admin">Admin</button></nav>
     <div id="toast-banner"><span id="toast-message" style="font-size: 0.9rem; font-weight: 600;">Notification Message</span><button onclick="hideToast()" style="background: none; border: none; color: var(--text-muted); font-weight: bold; font-size: 1.2rem; cursor: pointer; padding: 0 5px 0 15px; height: 100%; line-height: 1;">×</button></div>
 </div>
+
 <script>
     // =========================================================================================
-    //                         APPLICATION STATE MACHINE ENGINE SCRIPTS (v7.6.3)
+    //                         APPLICATION STATE MACHINE ENGINE SCRIPTS (v7.7.0)
     // =========================================================================================
-    // For local testing only – uses plaintext passcode "PROSTRACK99".
-    // Replace with secure verification before production.
-    
-    const APP_VERSION = "7.6.3";
+    const APP_VERSION = "7.7.0";
     const SCHEMA_VERSION = 4;
-    const APP_CHANGELOG = [
-        "v7.6.3 - Simplified passcode to direct compare for local testing (no crypto)."
-    ];
+    const APP_CHANGELOG = ["v7.7.0 - Fixed PWA: external manifest.json and sw.js for real installable app on GitHub Pages."];
 
     const STORAGE_KEY = "ProsTrackData";
 
     let appState = { version: SCHEMA_VERSION, history: {}, settings: { goalMetric: 'dial', goalValue: 50, unlocked: false, initializedTrial: false } };
-    let quoteInterval = null;
-    let countdownTimeLeft = 5000;
-    let toastTimeout = null;
-    let clearConfirmTimer = null;
-    let editorConfirmTimer = null;
+    let quoteInterval = null, countdownTimeLeft = 5000, toastTimeout = null, clearConfirmTimer = null, editorConfirmTimer = null;
     let localEditorBuffer = { dials: 0, contacts: 0, presentations: 0, quoted: 0 };
-    let nowCache = new Date();
-    let todayMidnightCache = new Date(nowCache.getFullYear(), nowCache.getMonth(), nowCache.getDate(), 0, 0, 0, 0);
+    let nowCache = new Date(), todayMidnightCache = new Date(nowCache.getFullYear(), nowCache.getMonth(), nowCache.getDate(), 0, 0, 0, 0);
 
-    // ========== All core functions (unchanged except verify) ==========
     function getActiveHistory() {
         const hist = appState.history || {};
         if (appState?.settings?.unlocked) return hist;
@@ -322,8 +199,7 @@
     }
 
     function save() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); }
-        catch (e) { console.error("Write failure", e); }
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); } catch (e) { console.error("Write failure", e); }
         updateUI();
     }
 
@@ -456,7 +332,7 @@
         evaluateApplicationStateViewports();
         initDay();
         
-        // Triple-tap reset (for testing)
+        // Triple-tap reset
         const adminVersionLabel = document.getElementById('lbl-version-admin');
         if (adminVersionLabel) {
             let adminTapCount = 0, adminTapTimer = null;
@@ -474,6 +350,17 @@
                     initDay();
                     showToast("🔧 Sandbox Mode Re-initialized.", "warning");
                 }
+            });
+        }
+        
+        // Register service worker (real sw.js)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('Service Worker registered', reg);
+                }).catch(err => {
+                    console.warn('SW registration failed', err);
+                });
             });
         }
     }
@@ -775,14 +662,10 @@
         const dayRecord = appState.history[dateInput] || { dials: 0, contacts: 0, presentations: 0, quoted: 0 }; localEditorBuffer = { dials: dayRecord.dials || 0, contacts: dayRecord.contacts || 0, presentations: dayRecord.presentations || 0, quoted: dayRecord.quoted || 0 }; syncEditorInterfaceValues(); document.getElementById('editor-deck').style.display = 'block'; document.getElementById('btn-save-editor').style.display = 'block';
     }
 
-    // SIMPLE DIRECT COMPARE (works everywhere, for local testing only)
     function verifyManualPasscode() {
         const input = document.getElementById('txt-passcode-input');
         let code = input?.value.trim();
-        if (!code) {
-            showToast("Please enter a license key.", "warning");
-            return;
-        }
+        if (!code) { showToast("Please enter a license key.", "warning"); return; }
         code = code.toUpperCase();
         if (code === "PROSTRACK99") {
             appState.settings.unlocked = true;
@@ -831,20 +714,8 @@
     document.addEventListener('fullscreenchange', syncFullscreenState);
     document.addEventListener('webkitfullscreenchange', syncFullscreenState);
 
-    function registerSelfContainedServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swCode = `
-                    const CACHE_NAME = 'prostrack-cache-v${APP_VERSION}';
-                    self.addEventListener('install', (e) => { self.skipWaiting(); });
-                    self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); });
-                    self.addEventListener('fetch', (e) => { e.respondWith(fetch(e.request).catch(() => caches.match(e.request))); });
-                `;
-                try { const blob = new Blob([swCode], { type: 'application/javascript' }); navigator.serviceWorker.register(URL.createObjectURL(blob)); } catch (e) { console.warn('SW execution bypass', e); }
-            });
-        }
-    }
+    // Start the app
+    init();
 </script>
-<script>init(); registerSelfContainedServiceWorker();</script>
 </body>
 </html>
