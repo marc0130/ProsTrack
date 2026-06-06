@@ -1,0 +1,16 @@
+{
+  "name": "ProsTrack",
+  "short_name": "ProsTrack",
+  "description": "Minimalist Outbound Call Logger & Sales Funnel Tracker",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#05070f",
+  "theme_color": "#05070f",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='100%' height='100%' rx='128' fill='%230f172a'/><circle cx='256' cy='256' r='120' fill='none' stroke='%233b82f6' stroke-width='32'/><path d='M256 180v16M116 256h160' stroke='%2310b981' stroke-width='32' stroke-linecap='round'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
