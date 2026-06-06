@@ -17,7 +17,6 @@
     <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
     
     <style>
-        /* ========== ALL EXISTING CSS (unchanged from v7.6.3) ========== */
         body { background-color: #05070f; margin: 0; padding: 0; overflow-x: hidden; }
         #prostrack-app { --bg: #05070f; --card-bg: #0f172a; --border: #1e293b; --text: #f8fafc; --text-muted: #64748b; --accent: #3b82f6; --danger: #ef4444; --accent-dial: #64748b; --accent-contact: #3b82f6; --accent-presentation: #a855f7; --accent-quote: #10b981; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; width: 100%; padding-bottom: 120px; box-sizing: border-box; -webkit-tap-highlight-color: transparent; display: flex; flex-direction: column; position: relative; }
         #prostrack-app *, #prostrack-app *::before, #prostrack-app *::after { box-sizing: border-box; }
@@ -51,7 +50,7 @@
         #prostrack-app.raw-sandbox #card-unlocked-success-indicator { display: none !important; }
         #prostrack-app.raw-sandbox #btn-trial-convert-cta { display: block !important; }
         #prostrack-app.focus-active .trial-thin-banner, #prostrack-app.focus-active .sandbox-thin-banner { display: none !important; }
-        #prostrack-app .dash { background: var(--card-bg); color: var(--text); padding: 1.25rem; border-radius: 24px; margin-bottom: 1.25rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); position: relative; }
+        #prostrack-app .dash { background: var(--card-bg); color: var(--text); padding: 1.25rem; border-radius: 24px; margin-bottom: 1.25rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); position: relative; transition: border-color 0.3s ease; }
         #prostrack-app .dash::before, #prostrack-app .dash::after { content: ''; position: absolute; left: 45%; right: 45%; height: 2px; border-top: 2px dashed rgba(59, 130, 246, 0.25); pointer-events: none; z-index: 1; }
         #prostrack-app .dash::before { top: 25%; }
         #prostrack-app .dash::after { bottom: 25%; border-top-color: rgba(16, 185, 129, 0.25); }
@@ -139,7 +138,7 @@
             <div class="action-stack"><button class="btn-action btn-dial" onclick="record('dial')">Dial</button><button class="btn-action btn-contact" onclick="record('contact')">Contact</button><button class="btn-action btn-presentation" onclick="record('presentation')">Presentation</button><button class="btn-action btn-quote" onclick="handleQuoteClick()">Quote</button></div>
             <div style="text-align: center; margin-top: 1.5rem;"><div id="last-action-display" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; height: 16px;"></div><button onclick="undo()" style="background:none; border:none; color:var(--text-muted); font-size:0.8rem; cursor:pointer; min-height: 48px;">↺ Undo Last Action</button></div>
             <div id="quote-confirm-banner"><div class="banner-content"><span class="banner-title">🏆 Quote Logged!</span><span class="banner-timer">Undo window closes in <span id="countdown-num">5</span>s...</span><button class="btn-undo-banner" onclick="cancelQuoteRecord()">Undo</button></div><div class="banner-progress-bar"><div id="banner-progress-fill"></div></div></div>
-            <div class="version dev-label-target" id="lbl-version-tracker">ProsTrack v7.7.0</div>
+            <div class="version dev-label-target" id="lbl-version-tracker">ProsTrack v7.7.1</div>
         </section>
         <section id="stats" class="tab-content">
             <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Demo Mode Sandbox</span></div><div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial</span></div>
@@ -157,7 +156,7 @@
             <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Historical Day Editor</h3><div style="margin-bottom: 14px;"><label for="editor-date-select">SELECT TRANSACTION DATE</label><input type="date" id="editor-date-select" onchange="loadDayToEditor()" style="margin-bottom: 0;"></div><div id="editor-warning-box" style="background: #451a03; border: 1px solid #9a3412; border-radius: 12px; padding: 12px; margin-bottom: 16px; display: none;"><div style="font-size: 0.75rem; color: #fdba74; font-weight: 700; text-transform: uppercase;">⚠️ WARNING: PERMANENT OVERWRITE</div><div style="font-size: 0.75rem; color: #ffedd5; line-height: 1.4;">Saving will instantly overwrite this day's metrics. This action cannot be reverted.</div></div><div id="editor-deck" style="display: none; margin-bottom: 16px;"><div class="editor-row"><span class="editor-label">Dials Volume</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('dials', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('dials', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-dials">0</span><button onmousedown="startStepperLoop('dials', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('dials', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Contacts Made</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('contacts', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('contacts', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-contacts">0</span><button onmousedown="startStepperLoop('contacts', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('contacts', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Presentations Done</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('presentations', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('presentations', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-presentations">0</span><button onmousedown="startStepperLoop('presentations', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('presentations', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Quotes Secured</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('quoted', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('quoted', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-quoted">0</span><button onmousedown="startStepperLoop('quoted', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('quoted', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div></div><button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button></div>
             <div id="db-utilities-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>Database Utilities</h3><button id="btn-export-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportData()">Export JSON Backup <span id="lbl-json-lock" class="badge-lock">Pro Locked</span></button><input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)"><button id="btn-import-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="document.getElementById('import-file').click()">Restore JSON Backup</button><button id="btn-export-csv" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportToCSV()">Export CSV Report <span id="lbl-csv-lock" class="badge-lock">Pro Locked</span></button><button id="btn-clear-data" class="btn-action btn-danger" style="width:100%" onclick="clearAllData()">Clear All Data</button></div>
             <div id="install-guide-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>How to Install (PWA)</h3><p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 12px;">ProsTrack is a Progressive Web App. Adding it to your home screen installs it as an offline-first workspace, removing browser frames.</p><div style="font-size: 0.8rem; line-height: 1.5; margin-bottom: 14px;"><strong>iOS (Safari):</strong> Tap the <b>Share</b> button, scroll down, and select <b>Add to Home Screen</b>.<br><strong>Android (Chrome):</strong> Tap the <b>Menu (⋮)</b> icon, and select <b>Install App</b> or <b>Add to Home Screen</b>.</div></div>
-            <div class="version dev-label-target" id="lbl-version-admin" style="cursor: pointer;">ProsTrack v7.7.0</div>
+            <div class="version dev-label-target" id="lbl-version-admin" style="cursor: pointer;">ProsTrack v7.7.1</div>
         </section>
     </main>
     <nav id="app-navigation-bar" class="nav"><button onclick="showTab('welcome')" id="nav-welcome">Unlock</button><button onclick="showTab('tracker')" id="nav-tracker" class="active">Tracker</button><button onclick="showTab('stats')" id="nav-stats">Stats</button><button onclick="showTab('admin')" id="nav-admin">Admin</button></nav>
@@ -165,12 +164,9 @@
 </div>
 
 <script>
-    // =========================================================================================
-    //                         APPLICATION STATE MACHINE ENGINE SCRIPTS (v7.7.0)
-    // =========================================================================================
-    const APP_VERSION = "7.7.0";
+    const APP_VERSION = "7.7.1";
     const SCHEMA_VERSION = 4;
-    const APP_CHANGELOG = ["v7.7.0 - Hardened JSON validation, date safety locks, and long-press steppers."];
+    const APP_CHANGELOG = ["v7.7.1 - Handened quota limits and structured layout indication thresholds."];
 
     const STORAGE_KEY = "ProsTrackData";
 
@@ -194,7 +190,16 @@
     }
 
     function save() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); } catch (e) { console.error("Write failure", e); }
+        try { 
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); 
+        } catch (e) { 
+            console.error("Write failure", e);
+            if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+                showToast("⚠️ Browser data storage limit hit. Please clear local space.", "error");
+            } else {
+                showToast("⚠️ Storage transaction fault.", "error");
+            }
+        }
         updateUI();
     }
 
@@ -256,6 +261,10 @@
         if (rootAppShell) {
             rootAppShell.classList.remove('raw-sandbox', 'trial-active', 'pro-active');
             rootAppShell.classList.add(isUnlocked ? 'pro-active' : isInitialized ? 'trial-active' : 'raw-sandbox');
+        }
+        const dashContainer = document.querySelector('#prostrack-app .dash');
+        if (dashContainer) {
+            dashContainer.style.borderColor = isUnlocked ? 'var(--accent-quote)' : 'var(--border)';
         }
         const btnJson = document.getElementById('btn-export-data');
         const btnCsv = document.getElementById('btn-export-csv');
@@ -327,7 +336,6 @@
         evaluateApplicationStateViewports();
         initDay();
         
-        // Triple-tap reset
         const adminVersionLabel = document.getElementById('lbl-version-admin');
         if (adminVersionLabel) {
             let adminTapCount = 0, adminTapTimer = null;
@@ -348,7 +356,6 @@
             });
         }
         
-        // Register service worker (real sw.js)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').then(reg => {
@@ -656,7 +663,7 @@
         reader.onload = function(e) {
             try {
                 let parsed = JSON.parse(e.target.result);
-                if (parsed && typeof parsed === 'object' && parsed.history && typeof parsed.history === 'object') {
+                if (parsed && typeof parsed === 'object' && parsed.history && typeof parsed.history === 'object' && !Array.isArray(parsed.history)) {
                     const validHistory = {};
                     for (const [dateStr, metrics] of Object.entries(parsed.history)) {
                         if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && metrics && typeof metrics === 'object') {
@@ -768,7 +775,6 @@
     document.addEventListener('fullscreenchange', syncFullscreenState);
     document.addEventListener('webkitfullscreenchange', syncFullscreenState);
 
-    // Start the app
     init();
 </script>
 </body>
