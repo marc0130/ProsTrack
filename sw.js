@@ -1,4 +1,9 @@
-const CACHE_NAME = 'prostrack-cache-v7.7.0';
+// =========================================================================================
+// PROSTRACK SERVICE WORKER ENGINE
+// Version Alignment Reference Tracking: v7.7.1
+// =========================================================================================
+
+const CACHE_NAME = 'prostrack-cache-v7.7.1';
 const urlsToCache = [
   'index.html',
   'manifest.json',
