@@ -1,4 +1,3 @@
-<!-- Version: 7.7.0 Complete -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +12,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ProsTrack">
     
-    <!-- Real manifest.json (not data URI) -->
     <link rel="manifest" href="manifest.json">
     
-    <!-- Payhip script (keep if you use it) -->
     <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
     
     <style>
@@ -70,6 +67,7 @@
         #prostrack-app .dash-item.flash-quote { background-color: rgba(16, 185, 129, 0.2) !important; }
         #prostrack-app .dash-val { font-size: 1.85rem; font-weight: 800; display: block; line-height: 1.1; margin-top: 4px; color: #ffffff; transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         #prostrack-app .dash-label { font-size: 0.65rem; opacity: 0.6; text-transform: uppercase; display: block; letter-spacing: 0.75px; font-weight: 700; }
+        #prostrack-app .nav-btn-hold { user-select: none; -webkit-user-select: none; }
         #prostrack-app .dash-item:nth-child(1) .dash-label { color: #cbd5e1; }
         #prostrack-app .dash-item:nth-child(2) .dash-label { color: #93c5fd; }
         #prostrack-app .dash-item:nth-child(3) .dash-label { color: #e9d5ff; }
@@ -95,7 +93,7 @@
         #prostrack-app .segmented-control .seg-btn { flex: 1; padding: 10px; border: none; background: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; border-radius: 9px; cursor: pointer; transition: all 0.2s; min-height: 48px; display: flex; align-items: center; justify-content: center; }
         #prostrack-app .segmented-control .seg-btn.active { background: var(--accent); color: white; }
         #prostrack-app .editor-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 10px; }
-        #prostrack-app .btn-stepper { background: var(--card-bg); border: 1px solid var(--border); color: white; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; user-select: none; }
+        #prostrack-app .btn-stepper { background: var(--card-bg); border: 1px solid var(--border); color: white; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; user-select: none; -webkit-user-select: none; }
         #prostrack-app .editor-val { font-size: 1.1rem; font-weight: 700; color: var(--text); min-width: 28px; text-align: center; }
         #prostrack-app .traj-widget-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
         #prostrack-app .traj-pill { background: rgba(5, 7, 15, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 8px; text-align: center; }
@@ -114,7 +112,6 @@
 <body>
 <div id="prostrack-app" class="raw-sandbox">
     <main>
-        <!-- Welcome tab -->
         <section id="welcome" class="tab-content">
             <h1>Welcome to ProsTrack</h1>
             <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 1.5rem;">You are currently evaluating ProsTrack under a standard local 14-day tracking window. Upgrade to premium layout configurations:</p>
@@ -133,7 +130,6 @@
             <button class="btn-action btn-dial" id="btn-trial-convert-cta" style="width: 100%; font-size: 1.05rem; background: #1e293b; margin-bottom: 14px;" onclick="initializeLiveTrialEnrollment()">Activate Clean 14-Day Local Trial</button>
             <div class="stat-card" style="border-color: var(--border); background: #0c1222; text-align: center; padding: 1.25rem; border-radius: 20px; margin-top: 1.5rem;"><h3 style="color: #cbd5e1; margin-bottom: 6px; font-size: 0.9rem;">📬 High-Trust Direct Support</h3><p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 12px 0; line-height: 1.45;">Need customized calculators, configurations, or have questions? Contact us anonymously.</p><a href="mailto:prostrack99@gmail.com" style="display: inline-block; background: #1e293b; border: 1px solid var(--border); color: var(--accent); padding: 8px 16px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none;">prostrack99@gmail.com</a></div>
         </section>
-        <!-- Tracker tab -->
         <section id="tracker" class="tab-content active">
             <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Interactive Demo: Raw Sandbox Mode</span><span style="text-decoration: underline;">ACTIVATE 14-DAY TRIAL ↗</span></div>
             <div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial Mode</span><span style="text-decoration: underline;">UPGRADE ↗</span></div>
@@ -145,7 +141,6 @@
             <div id="quote-confirm-banner"><div class="banner-content"><span class="banner-title">🏆 Quote Logged!</span><span class="banner-timer">Undo window closes in <span id="countdown-num">5</span>s...</span><button class="btn-undo-banner" onclick="cancelQuoteRecord()">Undo</button></div><div class="banner-progress-bar"><div id="banner-progress-fill"></div></div></div>
             <div class="version dev-label-target" id="lbl-version-tracker">ProsTrack v7.7.0</div>
         </section>
-        <!-- Stats tab -->
         <section id="stats" class="tab-content">
             <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Demo Mode Sandbox</span></div><div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ 14-Day Limited Trial</span></div>
             <h2>Performance Dashboard</h2>
@@ -154,13 +149,12 @@
             <select id="rangeSelect" onchange="updateUI()"><option value="today">Today</option><option value="yesterday">Yesterday</option><option value="this_week">This Week</option><option value="last_week">Last Week</option><option value="this_month" selected>This Month</option><option value="last_month">Last Month</option><option value="last_14">Last 14 Days (Trial Max)</option></select>
             <div id="stats-display"></div>
         </section>
-        <!-- Admin tab -->
         <section id="admin" class="tab-content">
             <div class="sandbox-thin-banner" onclick="showTab('welcome')"><span>🎮 Interactive Demo</span></div><div class="trial-thin-banner" onclick="showTab('welcome')"><span>⏳ Trial Mode</span></div>
             <h2>Settings & Security</h2>
             <div class="stat-card" id="card-unlocked-success-indicator" style="display: none; border-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 7, 15, 0.5) 100%); margin-bottom: 1.5rem;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.85rem; line-height: 1;">🏆</span><div style="flex: 1;"><h3 style="color: #10b981; margin-bottom: 4px; font-weight: 800;">Lifetime Pro Active</h3><p style="font-size: 0.75rem; color: #cbd5e1; line-height: 1.45; margin: 0;">Your workspace is permanently unlocked. Long-term analytics retention data, calculator scopes, and system exports are fully active.</p></div></div></div>
-            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Smart Pacing Goal Configuration</h3><div style="margin-bottom: 16px;"><label>PACING DRIVER</label><div class="segmented-control"><button class="seg-btn" onclick="updateGoalMetric('dial')" id="seg-dial">Dial</button><button class="seg-btn" onclick="updateGoalMetric('contact')" id="seg-contact">Cont</button><button class="seg-btn" onclick="updateGoalMetric('presentation')" id="seg-presentation">Pres</button><button class="seg-btn" onclick="updateGoalMetric('quoted')" id="seg-quoted">Quote</button></div></div><div style="margin-bottom: 16px;"><label>DAILY VALUE TARGET</label><div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border);"><button onclick="adjustGoal(-1)" class="btn-stepper">-</button><span id="goal-value-display" style="font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: monospace;">50</span><button onclick="adjustGoal(1)" class="btn-stepper">+</button></div></div><div style="border-top: 1px solid var(--border); padding-top: 12px;"><label>PROJECTED FUNNEL VALUE OUTPUT (D : C : P : Q)</label><div id="projected-ratio-settings" style="font-family: monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-quote); text-align: center; letter-spacing: 1px;">N/A</div></div></div>
-            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Historical Day Editor</h3><div style="margin-bottom: 14px;"><label for="editor-date-select">SELECT TRANSACTION DATE</label><input type="date" id="editor-date-select" onchange="loadDayToEditor()" style="margin-bottom: 0;"></div><div id="editor-warning-box" style="background: #451a03; border: 1px solid #9a3412; border-radius: 12px; padding: 12px; margin-bottom: 16px; display: none;"><div style="font-size: 0.75rem; color: #fdba74; font-weight: 700; text-transform: uppercase;">⚠️ WARNING: PERMANENT OVERWRITE</div><div style="font-size: 0.75rem; color: #ffedd5; line-height: 1.4;">Saving will instantly overwrite this day's metrics. This action cannot be reverted.</div></div><div id="editor-deck" style="display: none; margin-bottom: 16px;"><div class="editor-row"><span class="editor-label">Dials Volume</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('dials', -1)">-</button><span class="editor-val" id="ed-dials">0</span><button class="btn-stepper" onclick="adjustEditorMetric('dials', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Contacts Made</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('contacts', -1)">-</button><span class="editor-val" id="ed-contacts">0</span><button class="btn-stepper" onclick="adjustEditorMetric('contacts', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Presentations Done</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('presentations', -1)">-</button><span class="editor-val" id="ed-presentations">0</span><button class="btn-stepper" onclick="adjustEditorMetric('presentations', 1)">+</button></div></div><div class="editor-row"><span class="editor-label">Quotes Secured</span><div class="editor-control-deck"><button class="btn-stepper" onclick="adjustEditorMetric('quoted', -1)">-</button><span class="editor-val" id="ed-quoted">0</span><button class="btn-stepper" onclick="adjustEditorMetric('quoted', 1)">+</button></div></div></div><button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button></div>
+            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Smart Pacing Goal Configuration</h3><div style="margin-bottom: 16px;"><label>PACING DRIVER</label><div class="segmented-control"><button class="seg-btn" onclick="updateGoalMetric('dial')" id="seg-dial">Dial</button><button class="seg-btn" onclick="updateGoalMetric('contact')" id="seg-contact">Cont</button><button class="seg-btn" onclick="updateGoalMetric('presentation')" id="seg-presentation">Pres</button><button class="seg-btn" onclick="updateGoalMetric('quoted')" id="seg-quoted">Quote</button></div></div><div style="margin-bottom: 16px;"><label>DAILY VALUE TARGET</label><div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border);"><button onmousedown="startStepperLoop('goal', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('goal', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span id="goal-value-display" style="font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: monospace;">50</span><button onmousedown="startStepperLoop('goal', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('goal', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div style="border-top: 1px solid var(--border); padding-top: 12px;"><label>PROJECTED FUNNEL VALUE OUTPUT (D : C : P : Q)</label><div id="projected-ratio-settings" style="font-family: monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent-quote); text-align: center; letter-spacing: 1px;">N/A</div></div></div>
+            <div class="stat-card" style="margin-bottom: 1.5rem;"><h3>Historical Day Editor</h3><div style="margin-bottom: 14px;"><label for="editor-date-select">SELECT TRANSACTION DATE</label><input type="date" id="editor-date-select" onchange="loadDayToEditor()" style="margin-bottom: 0;"></div><div id="editor-warning-box" style="background: #451a03; border: 1px solid #9a3412; border-radius: 12px; padding: 12px; margin-bottom: 16px; display: none;"><div style="font-size: 0.75rem; color: #fdba74; font-weight: 700; text-transform: uppercase;">⚠️ WARNING: PERMANENT OVERWRITE</div><div style="font-size: 0.75rem; color: #ffedd5; line-height: 1.4;">Saving will instantly overwrite this day's metrics. This action cannot be reverted.</div></div><div id="editor-deck" style="display: none; margin-bottom: 16px;"><div class="editor-row"><span class="editor-label">Dials Volume</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('dials', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('dials', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-dials">0</span><button onmousedown="startStepperLoop('dials', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('dials', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Contacts Made</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('contacts', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('contacts', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-contacts">0</span><button onmousedown="startStepperLoop('contacts', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('contacts', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Presentations Done</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('presentations', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('presentations', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-presentations">0</span><button onmousedown="startStepperLoop('presentations', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('presentations', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div><div class="editor-row"><span class="editor-label">Quotes Secured</span><div class="editor-control-deck"><button onmousedown="startStepperLoop('quoted', -1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('quoted', -1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">-</button><span class="editor-val" id="ed-quoted">0</span><button onmousedown="startStepperLoop('quoted', 1)" onmouseup="stopStepperLoop()" onmouseleave="stopStepperLoop()" ontouchstart="startStepperLoop('quoted', 1)" ontouchend="stopStepperLoop()" class="btn-stepper nav-btn-hold">+</button></div></div></div><button id="btn-save-editor" class="btn-action" style="width: 100%; display: none; background: #064e3b; border-color: #065f46; color: #a7f3d0;" onclick="commitEditorChanges()">Save Day Records</button></div>
             <div id="db-utilities-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>Database Utilities</h3><button id="btn-export-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportData()">Export JSON Backup <span id="lbl-json-lock" class="badge-lock">Pro Locked</span></button><input type="file" id="import-file" accept=".json" style="display:none;" onchange="importData(event)"><button id="btn-import-data" class="btn-action" style="width:100%; margin-bottom:10px" onclick="document.getElementById('import-file').click()">Restore JSON Backup</button><button id="btn-export-csv" class="btn-action" style="width:100%; margin-bottom:10px" onclick="exportToCSV()">Export CSV Report <span id="lbl-csv-lock" class="badge-lock">Pro Locked</span></button><button id="btn-clear-data" class="btn-action btn-danger" style="width:100%" onclick="clearAllData()">Clear All Data</button></div>
             <div id="install-guide-card" class="stat-card" style="margin-bottom: 1.5rem;"><h3>How to Install (PWA)</h3><p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 12px;">ProsTrack is a Progressive Web App. Adding it to your home screen installs it as an offline-first workspace, removing browser frames.</p><div style="font-size: 0.8rem; line-height: 1.5; margin-bottom: 14px;"><strong>iOS (Safari):</strong> Tap the <b>Share</b> button, scroll down, and select <b>Add to Home Screen</b>.<br><strong>Android (Chrome):</strong> Tap the <b>Menu (⋮)</b> icon, and select <b>Install App</b> or <b>Add to Home Screen</b>.</div></div>
             <div class="version dev-label-target" id="lbl-version-admin" style="cursor: pointer;">ProsTrack v7.7.0</div>
@@ -176,7 +170,7 @@
     // =========================================================================================
     const APP_VERSION = "7.7.0";
     const SCHEMA_VERSION = 4;
-    const APP_CHANGELOG = ["v7.7.0 - Fixed PWA: external manifest.json and sw.js for real installable app on GitHub Pages."];
+    const APP_CHANGELOG = ["v7.7.0 - Hardened JSON validation, date safety locks, and long-press steppers."];
 
     const STORAGE_KEY = "ProsTrackData";
 
@@ -184,6 +178,7 @@
     let quoteInterval = null, countdownTimeLeft = 5000, toastTimeout = null, clearConfirmTimer = null, editorConfirmTimer = null;
     let localEditorBuffer = { dials: 0, contacts: 0, presentations: 0, quoted: 0 };
     let nowCache = new Date(), todayMidnightCache = new Date(nowCache.getFullYear(), nowCache.getMonth(), nowCache.getDate(), 0, 0, 0, 0);
+    let stepperInterval = null, stepperDelayTimeout = null;
 
     function getActiveHistory() {
         const hist = appState.history || {};
@@ -542,6 +537,26 @@
         container.innerHTML = `<div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">Current operational yield is at <span style="color: ${statusColor}; font-weight: 800;">${Math.round(completedRatio * 100)}%</span> of your target velocity.</div><div class="traj-widget-grid"><div class="traj-pill"><span class="traj-pill-label">Open Target</span><span class="traj-pill-val" style="color: var(--accent);">${openNeeded}</span></div><div class="traj-pill"><span class="traj-pill-label">Dials Remaining</span><span class="traj-pill-val">~${remainingDialsToPerform}</span></div><div class="traj-pill"><span class="traj-pill-label">Conversion Yield</span><span class="traj-pill-val" style="color: #a855f7;">${efficiencyPercent}%</span></div></div>`;
     }
 
+    function updateHtmlStepperValue(type, amount) {
+        if (type === 'goal') adjustGoal(amount);
+        else adjustEditorMetric(type, amount);
+    }
+
+    function startStepperLoop(type, amount) {
+        if (stepperInterval || stepperDelayTimeout) stopStepperLoop();
+        updateHtmlStepperValue(type, amount);
+        stepperDelayTimeout = setTimeout(() => {
+            stepperInterval = setInterval(() => {
+                updateHtmlStepperValue(type, amount);
+            }, 80);
+        }, 500);
+    }
+
+    function stopStepperLoop() {
+        if (stepperDelayTimeout) { clearTimeout(stepperDelayTimeout); stepperDelayTimeout = null; }
+        if (stepperInterval) { clearInterval(stepperInterval); stepperInterval = null; }
+    }
+
     function updateLastActionDisplay() {
         const el = document.getElementById('last-action-display'); if (!el) return;
         if (appState.lastAction) {
@@ -635,7 +650,41 @@
         a.click(); 
     }
 
-    function importData(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { try { let parsed = JSON.parse(e.target.result); if (parsed?.history) { parsed = migrateDatabaseSchema(parsed); appState = parsed; save(); evaluateApplicationStateViewports(); showToast('Database backup successfully restored.', 'success'); } } catch (err) { showToast('Parsing structural failure.', 'error'); } }; reader.readAsText(file); event.target.value = ''; }
+    function importData(event) {
+        const file = event.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                let parsed = JSON.parse(e.target.result);
+                if (parsed && typeof parsed === 'object' && parsed.history && typeof parsed.history === 'object') {
+                    const validHistory = {};
+                    for (const [dateStr, metrics] of Object.entries(parsed.history)) {
+                        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && metrics && typeof metrics === 'object') {
+                            validHistory[dateStr] = {
+                                dials: Number(metrics.dials) || 0,
+                                contacts: Number(metrics.contacts) || 0,
+                                presentations: Number(metrics.presentations) || 0,
+                                quoted: Number(metrics.quoted) || 0
+                            };
+                        }
+                    }
+                    parsed.history = validHistory;
+                    parsed.settings = {
+                        goalMetric: typeof parsed.settings?.goalMetric === 'string' ? parsed.settings.goalMetric : 'dial',
+                        goalValue: Number(parsed.settings?.goalValue) || 50,
+                        unlocked: !!parsed.settings?.unlocked,
+                        initializedTrial: !!parsed.settings?.initializedTrial
+                    };
+                    parsed = migrateDatabaseSchema(parsed);
+                    appState = parsed; save(); evaluateApplicationStateViewports();
+                    showToast('Database backup successfully restored.', 'success');
+                } else {
+                    showToast('Invalid backup file structure.', 'error');
+                }
+            } catch (err) { showToast('Parsing structural failure.', 'error'); }
+        };
+        reader.readAsText(file); event.target.value = '';
+    }
 
     function adjustEditorMetric(metric, amount) {
         if (metric === 'dials') localEditorBuffer.dials = Math.max(0, localEditorBuffer.dials + amount);
@@ -658,6 +707,11 @@
 
     function loadDayToEditor() {
         const dateInput = document.getElementById('editor-date-select').value; if (!dateInput) return;
+        if (new Date(dateInput + 'T00:00:00') > todayMidnightCache) {
+            showToast("Cannot view or edit future production targets.", "warning");
+            document.getElementById('editor-date-select').value = '';
+            return;
+        }
         if (!appState?.settings?.unlocked) { const parts = dateInput.split('-'); const itemDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10), 0, 0, 0, 0); const limitDate = new Date(nowCache.getFullYear(), nowCache.getMonth(), nowCache.getDate() - 14, 0, 0, 0, 0); if (itemDate < limitDate) { showToast("Updates beyond 14 days require Pro unlock passcode.", "warning"); document.getElementById('editor-date-select').value = ''; return; } }
         const dayRecord = appState.history[dateInput] || { dials: 0, contacts: 0, presentations: 0, quoted: 0 }; localEditorBuffer = { dials: dayRecord.dials || 0, contacts: dayRecord.contacts || 0, presentations: dayRecord.presentations || 0, quoted: dayRecord.quoted || 0 }; syncEditorInterfaceValues(); document.getElementById('editor-deck').style.display = 'block'; document.getElementById('btn-save-editor').style.display = 'block';
     }
